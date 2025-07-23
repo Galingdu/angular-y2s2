@@ -1,0 +1,24 @@
+<div class="max-w-sm mx-auto bg-white rounded-xl shadow-md">
+      <!-- Product Image -->
+      <div class="flex justify-center items-center h-[300px] max-sm:w-[250px] bg-gray-100 overflow-hidden">
+        <img [src]="product.image" alt="{{product.name}}" class="h-full object-contain" />
+      </div>
+
+      <!-- Product Info -->
+      <div class="p-5 text-center">
+        <div class="text-gray-800 font-bold text-lg tracking-wide line-clamp-1">{{product.name}}</div>
+        <p class="text-gray-500 text-sm mt-1 line-clamp-2">{{product.description}}</p>
+        <p class="text-green-500 text-xl font-semibold mt-3">{{product.price | currency}}</p>
+
+        <!-- Rating -->
+        <div class="text-yellow-400 justify-center mt-2">
+          <p>Rate: ★{{product.rating}}</p>
+        </div>
+      </div>
+
+      <!-- Add to Cart Button -->
+      <div class="bg-teal-500 hover:bg-teal-600 text-white text-center py-3 cursor-pointer">
+        ADD TO CART
+      </div>
+    </div>
+ 
