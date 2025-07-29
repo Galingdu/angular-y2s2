@@ -1,13 +1,1 @@
-<app-header></app-header>
-<app-slider></app-slider>
-
-<div class="container mx-auto mt-5 px-4">
-  <!-- Product List -->
-  <div class="flex gap-4 overflow-x-auto pb-4 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6">
-    <div *ngFor="let product of products" class="flex-shrink-0 w-64 sm:w-auto">
-      <app-add-to-card [product]="product"></app-add-to-card>
-    </div>
-  </div>
-</div>
-
 <router-outlet></router-outlet>
