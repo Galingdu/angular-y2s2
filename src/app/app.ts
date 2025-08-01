@@ -5,10 +5,11 @@ import { AddToCard } from './add-to-card/add-to-card';
 import { Header } from "./header/header";
 import { Slider } from './slider/slider';
 import { Footer } from "./footer/footer";
+import { Homepage } from "./homepage/homepage";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, Footer, Header],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -2,24 +2,45 @@ import { Routes } from '@angular/router';
 import { Header } from './header/header';
 import { AddToCard } from './add-to-card/add-to-card';
 import { PageNotFound } from './page-not-found/page-not-found';
+import { Homepage } from './homepage/homepage';
+import { Company } from './company/company';
+import { Marketplace } from './marketplace/marketplace';
+import { Contact } from './contact/contact';
+import { Login } from './login/login';
+import { SignUp } from './sign-up/sign-up';
 
 export const routes: Routes = [
     {
-        path:'',
-        redirectTo:'home',
-        pathMatch:'full'
+        path: '',
+        component:Homepage
     },
     {
-        path:'',
-        component:Header,
-        children:[
-            {
-                path:'home',component:AddToCard
-
-            },
-            {
-                path:'**',component:PageNotFound
-            }
-    ]
-    }
+        path: 'home',
+        component:Homepage
+    },
+    {
+        path: 'company',
+        component: Company
+    },
+    {
+        path: 'marketplace',
+        component: Marketplace
+    },
+    {
+        path: 'contact',
+        component: Contact
+    },
+    {
+        path: 'login',
+        component: Login
+    },
+    {
+        path: 'signup',
+        component: SignUp
+    },
+    {
+        path: '**',
+        component: PageNotFound
+    },
+    
 ];

@@ -1,0 +1,118 @@
+<!-- location-selector.component.html -->
+<div *ngIf="showModal" class="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-30">
+    <div class="bg-white w-full max-w-6xl p-6 rounded-lg relative overflow-y-auto max-h-screen">
+        <!-- Close button -->
+        <button (click)="closeModal()"
+            class="absolute top-4 right-4 text-black bg-black/10 hover:bg-black/20 rounded-full w-8 h-8 flex items-center justify-center">
+            ✕
+        </button>
+
+        <!-- Title -->
+        <h1 class="text-3xl font-semibold text-center mb-12">Select your Location <i class="fas fa-map-marker-alt text-red-500"></i>
+</h1>
+
+        
+
+        <!-- Africa -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-medium mb-6">Africa</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Egypt <div class="text-sm text-gray-500">English</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Morocco <div class="text-sm text-gray-500">English</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Maroc <div class="text-sm text-gray-500">Français</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    South Africa <div class="text-sm text-gray-500">English</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- South Asia -->
+        <div class="mb-10">
+            <h2 class="text-2xl font-medium mb-6">South Asia</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    India <div class="text-sm text-gray-500">English</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Pakistan <div class="text-sm text-gray-500">English</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Bangladesh <div class="text-sm text-gray-500">English</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Americas -->
+        <div>
+            <h2 class="text-2xl font-medium mb-6">Americas</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Argentina <div class="text-sm text-gray-500">Español</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Brasil <div class="text-sm text-gray-500">Português</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Canada <div class="text-sm text-gray-500">English</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Canada <div class="text-sm text-gray-500">Français</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Chile <div class="text-sm text-gray-500">Español</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Colombia <div class="text-sm text-gray-500">Español</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    México <div class="text-sm text-gray-500">Español</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Peru <div class="text-sm text-gray-500">Español</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Puerto Rico <div class="text-sm text-gray-500">Español</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    United States <div class="text-sm text-gray-500">English</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Estados Unidos <div class="text-sm text-gray-500">Español</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Uruguay <div class="text-sm text-gray-500">Español</div>
+                </div>
+                <div (click)="closeModal()"
+                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+                    Latin America <div class="text-sm text-gray-500">Español</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

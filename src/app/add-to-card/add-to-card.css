@@ -1,0 +1,14 @@
+/* Chrome, Safari, Opera */
+.element::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+.element {
+  scrollbar-width: none;
+}
+
+/* Internet Explorer and Edge */
+.element {
+  -ms-overflow-style: none;
+}
