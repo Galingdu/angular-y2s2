@@ -1,24 +1,44 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { flush } from '@angular/core/testing';
+declare const Swal: any;
 
 @Component({
   selector: 'app-select-location',
-  imports: [NgIf],
+  imports: [],
   templateUrl: './select-location.html',
-  styleUrl: './select-location.css'
+  styleUrl: './select-location.css',
 })
 export class SelectLocation {
-   showModal = false;
 
-  ngOnInit(): void {
-    // Show modal on page refresh/load
-    setTimeout(() => {
-    this.showModal = true;
-  }, 600); 
-  }
+ 
+  // ngOnInit(){
+  //   this.showModal=true;
+  // }
 
-  closeModal(): void {
-    this.showModal = false;
-  }
+  // ngOnInit(): void {
+  //   // Show modal on page refresh/load
+  //   setTimeout(() => {
+  //     this.showModal = true;
+  //   }, 600);
+  // }
+
+// ngOnInit(): void {
+//     const modalShown = localStorage.getItem('modalShown');
+
+//     if (!modalShown) {
+//       // Show modal only if it hasn’t been shown before
+//       setTimeout(() => {
+//         this.showModal = true;
+       
+//       }, 600);
+//     }
+//   }
+
+
+ 
+ 
+
+
 
 }

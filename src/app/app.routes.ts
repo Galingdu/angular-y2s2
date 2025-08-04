@@ -8,6 +8,7 @@ import { Marketplace } from './marketplace/marketplace';
 import { Contact } from './contact/contact';
 import { Login } from './login/login';
 import { SignUp } from './sign-up/sign-up';
+import { SelectLocation } from './select-location/select-location';
 
 export const routes: Routes = [
     {
@@ -37,6 +38,10 @@ export const routes: Routes = [
     {
         path: 'signup',
         component: SignUp
+    },
+    {
+        path: 'loacation',
+        component:SelectLocation
     },
     {
         path: '**',

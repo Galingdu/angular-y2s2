@@ -7,14 +7,14 @@
     <div *ngFor="let product of products"
       class="flex-shrink-0 w-64 lg:w-auto max-w-sm bg-white rounded-xl shadow-md border-gray-200 border-2 overflow-hidden md:mb-5 max-sm:mb-3">
       <!-- Product Image -->
-      <div class="flex justify-center items-center bg-gray-100 overflow-hidden sm:h-50 h-35">
+      <div class="flex justify-center items-center bg-gray-100 overflow-hidden sm:h-50 h-35" >
         <img [src]="product.image" alt="{{product.name}}" class="h-full w-full object-contain hover:scale-105 transition-transform duration-300" />
       </div>
 
       <!-- Product Info -->
       <div class="p-5 text-center">
         <div class="text-gray-800 font-bold text-lg tracking-wide line-clamp-1">{{product.name}}</div>
-        <p class="text-gray-500 text-sm mt-1 lg:line-clamp-1 line-clamp-2">{{product.description}}</p>
+        <p class="text-gray-500 text-sm mt-1 lg:line-clamp-1 line-clamp-2 hover:cursor-pointer" (click)="photoClicked(product)">{{product.description}}</p>
         <p class="text-green-500 text-xl font-semibold mt-3">{{product.price | currency}}</p>
 
         <!-- Rating -->
