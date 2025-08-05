@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './footer.css'
 })
 export class Footer {
+  footerIsHover:boolean=false;
+
+  handleFooterHover(status:boolean){
+    this.footerIsHover=status;
+
+  }
 
 }

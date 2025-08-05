@@ -1,40 +1,58 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
+import { flush } from '@angular/core/testing';
 
-declare const Swal:any
+declare const Swal: any;
 
 @Component({
   selector: 'app-header',
   imports: [RouterLink, NgClass],
   templateUrl: './header.html',
-  styleUrls: ['./header.css']
+  styleUrls: ['./header.css'],
 })
 export class Header {
- 
-   menuOpen:boolean = false;
-   showModal = true;
-
-   hanleLocationChoose(){
-
-    this.showModal = true;
-   }
-
-     closeModal(): void {
-    this.showModal = false;
-  }
-    
-  //  chooseLocation:boolean = false;
+  menuOpen: boolean = false;
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
   closeMenu() {
-  this.menuOpen = false;
-  // this.chooseLocation = true;
-}
+    this.menuOpen = false;
+    // this.chooseLocation = true;
+  }
 
- handleLocation(location: string | { country: string; cities: string }) {
+  showModal = false;
+
+
+  menuIsHover=false;
+  handleMenuHover(status:boolean){
+    this.menuIsHover=status;
+
+  }
+
+  ngOnInit(){
+    const modalShown = localStorage.getItem('modalShown')
+
+    if(!modalShown){
+        setTimeout(()=>{
+          this.showModal=true;
+        },500)
+    }
+    
+  }
+
+  hanleLocationChoose() {
+    this.showModal = true;
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+  }
+
+  //  chooseLocation:boolean = false;
+
+  handleLocation(location: string | { country: string; cities: string }) {
     if (typeof location === 'string') {
       Swal.fire({
         html: `<p style="font-size:16px; margin:0;">Your Location is: ${location}</p>`,
@@ -42,48 +60,51 @@ export class Header {
         background: 'rgba(255, 255, 255, 0.95)',
         showConfirmButton: false,
         timer: 1500,
-        
       });
       setTimeout(() => {
         this.showModal = false;
-        //  localStorage.setItem('modalShown', 'true');
+         localStorage.setItem('modalShown', 'true');
       }, 1000);
     } else {
       Swal.fire({
-        html: '<p style="font-size:16px; margin:0;">Your Location is: ' + location.country + ', ' + location.cities + '</p>',
+        html:
+          '<p style="font-size:16px; margin:0;">Your Location is: ' +
+          location.country +
+          ', ' +
+          location.cities +
+          '</p>',
         position: 'top',
         background: 'rgba(255, 255, 255, 0.95)',
         showConfirmButton: false,
         timer: 1500,
-        
       });
       setTimeout(() => {
         this.showModal = false;
-        //  localStorage.setItem('modalShown', 'true');
+         localStorage.setItem('modalShown', 'true');
       }, 1000);
     }
   }
 
-    Working() {
+  Working() {
     Swal.fire('Location is Fixing!');
   }
 
-// openLocationModal(){
-//   this.chooseLocation = true;
-  
-//   //  localStorage.setItem('modalShown', 'false');
-// }
+  // openLocationModal(){
+  //   this.chooseLocation = true;
 
-// ngOnInit(): void {
-//     const modalShown = localStorage.getItem('modalShown');
+  //   //  localStorage.setItem('modalShown', 'false');
+  // }
 
-//     if (!modalShown) {
-//       // Show modal only if it hasn’t been shown before
-//       setTimeout(() => {
-//         this.chooseLocation = true;
-//       }, 600);
-//     }
-//   }
+  // ngOnInit(): void {
+  //     const modalShown = localStorage.getItem('modalShown');
+
+  //     if (!modalShown) {
+  //       // Show modal only if it hasn’t been shown before
+  //       setTimeout(() => {
+  //         this.chooseLocation = true;
+  //       }, 600);
+  //     }
+  //   }
   EnglandLocationList: string[] = [
     'London',
     'Manchester',
@@ -123,6 +144,4 @@ export class Header {
     { country: 'Vietnam', cities: 'Hanoi' },
     { country: 'Philippines', cities: 'Manila' },
   ];
-  
 }
- 
