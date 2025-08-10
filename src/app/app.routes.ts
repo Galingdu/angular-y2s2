@@ -1,51 +1,60 @@
 import { Routes } from '@angular/router';
-import { Header } from './header/header';
-import { AddToCard } from './add-to-card/add-to-card';
 import { PageNotFound } from './page-not-found/page-not-found';
 import { Homepage } from './homepage/homepage';
-import { Company } from './company/company';
-import { Marketplace } from './marketplace/marketplace';
 import { Contact } from './contact/contact';
 import { Login } from './login/login';
 import { SignUp } from './sign-up/sign-up';
 import { SelectLocation } from './select-location/select-location';
+import { Layout } from './layout/layout';
+import { AboutPage } from './about-page/about-page';
+import { Company } from './company/company';
+import { ShowCardProductAdded } from './show-card-product-added/show-card-product-added';
 
 export const routes: Routes = [
-    {
+  {
+    path: 'login',
+    component: Login,
+  },
+  {
+    path: 'signup',
+    component: SignUp,
+  },
+  {
+    path: '',
+    component: Layout,
+    children: [
+      {
         path: '',
-        component:Homepage
-    },
-    {
+        component: Homepage,
+      },
+      {
         path: 'home',
-        component:Homepage
-    },
-    {
+        component: Homepage,
+      },
+      {
+        path: 'about',
+        component:AboutPage,
+      },
+      {
         path: 'company',
-        component: Company
-    },
-    {
-        path: 'marketplace',
-        component: Marketplace
-    },
-    {
+        component:Company,
+      },
+      {
         path: 'contact',
-        component: Contact
-    },
-    {
-        path: 'login',
-        component: Login
-    },
-    {
-        path: 'signup',
-        component: SignUp
-    },
-    {
+        component: Contact,
+      },
+      {
         path: 'loacation',
-        component:SelectLocation
-    },
-    {
-        path: '**',
-        component: PageNotFound
-    },
-    
+        component: SelectLocation,
+      },
+      {
+        path: 'productcart',
+        component:ShowCardProductAdded,
+      },
+    ],
+  },
+  {
+    path: '**',
+    component: PageNotFound,
+  },
 ];

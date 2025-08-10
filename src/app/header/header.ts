@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { flush } from '@angular/core/testing';
 
@@ -7,7 +7,7 @@ declare const Swal: any;
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, NgClass],
+  imports: [RouterLink, NgClass,RouterLinkActive],
   templateUrl: './header.html',
   styleUrls: ['./header.css'],
 })
@@ -29,6 +29,11 @@ export class Header {
   handleMenuHover(status:boolean){
     this.menuIsHover=status;
 
+  }
+
+  iconIsHover:boolean=false
+  handleIconHover(status:boolean){
+    this.iconIsHover=status;
   }
 
   ngOnInit(){
@@ -130,18 +135,18 @@ export class Header {
     'Ayr',
     'Dumfries',
   ];
-  AsiaLocationList: { country: string; cities: string }[] = [
-    { country: 'Cambodia', cities: 'Phnom Penh' },
-    { country: 'Vietnam', cities: 'Hanoi' },
-    { country: 'Japan', cities: 'Tokyo' },
-    { country: 'China', cities: 'Beijing' },
-    { country: 'South Korea', cities: 'Seoul' },
-    { country: 'Thailand', cities: 'Bangkok' },
-    { country: 'India', cities: 'Mumbai' },
-    { country: 'Singapore', cities: 'Singapore' },
-    { country: 'Malaysia', cities: 'Kuala Lumpur' },
-    { country: 'Indonesia', cities: 'Jakarta' },
-    { country: 'Vietnam', cities: 'Hanoi' },
-    { country: 'Philippines', cities: 'Manila' },
+  AsiaLocationList: { country: string; cities: string ;id:number}[] = [
+    { country: 'Cambodia', cities: 'Phnom Penh' ,id:1},
+    { country: 'Vietnam', cities: 'Hanoi' ,id:2},
+    { country: 'Japan', cities: 'Tokyo',id:3 },
+    { country: 'China', cities: 'Beijing' ,id:24},
+    { country: 'South Korea', cities: 'Seoul',id:5 },
+    { country: 'Thailand', cities: 'Bangkok' ,id:6},
+    { country: 'India', cities: 'Mumbai',id:7 },
+    { country: 'Singapore', cities: 'Singapore',id:8 },
+    { country: 'Malaysia', cities: 'Kuala Lumpur' ,id:9},
+    { country: 'Indonesia', cities: 'Jakarta' ,id:10},
+    { country: 'Vietnam', cities: 'Hanoi',id:11 },
+    { country: 'Philippines', cities: 'Manila',id:12 },
   ];
 }

@@ -7,3 +7,24 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;             /* Chrome, Safari, Opera */
 }
+.bgimage{
+    background: url('https://nikearprod.vtexassets.com/assets/vtex.file-manager-graphql/images/c61bf42d-b036-400c-8538-ed1c72e125e9___5e3dddc8690d43aac9920f01b23e470a.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.bgimage2{
+    background: url('https://static.nike.com/a/images/f_auto/019cf72e-ac24-49db-9ed2-6952ad1d4427/image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.bgimage3{
+    background: url('https://media.about.nike.com/img/fb412381-720e-4bf4-89dc-07bc5d4e3657/nike-football-scary-good-thumbnail.jpg?m=eyJlZGl0cyI6eyJqcGVnIjp7InF1YWxpdHkiOjEwMH0sIndlYnAiOnsicXVhbGl0eSI6MTAwfSwiZXh0cmFjdCI6eyJsZWZ0IjowLCJ0b3AiOjAsIndpZHRoIjoyMTYwLCJoZWlnaHQiOjE0NDB9LCJyZXNpemUiOnsid2lkdGgiOjE5MjB9fX0%3D&s=deb0b1768de9d992ca440e8ff0dbf4dd2a0deeb17ff0d7941d59447fea286577');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}

@@ -1,29 +1,38 @@
-<nav class="bg-gray-900 border-gray-700" (mouseleave)="handleMenuHover(false)">
+<nav class="bg-gray-900 border-gray-700 fixed w-full z-50" (mouseleave)="handleMenuHover(false)" data-aos="fade-down">
   <div class="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
 
     <!-- Logo -->
     <a routerLink="/" class="flex items-center gap-3">
       <img src="https://squeezecreative.com.au/wp-content/uploads/2014/05/Art-of-Cycling-2.png"
-        class="h-10 w-10 rounded-full" alt="Logo" />
+        class="h-10 w-10 rounded-full" alt="Logo"  (mouseover)="handleIconHover(true)" (mouseleave)="handleIconHover(false)"/>
       <span class="text-2xl font-bold text-white">JingJork</span>
     </a>
 
+    @if(iconIsHover){
+      <img src="https://squeezecreative.com.au/wp-content/uploads/2014/05/Art-of-Cycling-2.png"
+        class="w-40 rounded-lg fixed z-50 left-10 top-15 opacity-80" alt="Logo" />
+    }
+
     <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center gap-8" (mouseover)="handleMenuHover(true)">
-      <a routerLink="/home" class="text-gray-200  hover:text-teal-600 transition">Home</a>
-      <a routerLink="company" class="text-gray-200  hover:text-teal-600 transition">Company</a>
-      <a routerLink="/marketplace"
-        class="text-gray-200  hover:text-teal-600 transition">Marketplace</a>
-      <a routerLink="/contact" class="text-gray-200 hover:text-teal-600 transition">Contact</a>
+    <div class="hidden lg:flex items-center gap-8" (mouseover)="handleMenuHover(true)">
+      <a routerLink="/home" routerLinkActive="text-teal-500 underline underline-offset-4"
+        class="text-gray-200  hover:text-teal-600 transition">Home</a>
+      <a routerLink="/about" routerLinkActive="text-teal-500 underline underline-offset-4" 
+        class="text-gray-200  hover:text-teal-600 transition">About</a>
+
+      <a routerLink="/contact" routerLinkActive="text-teal-500 underline underline-offset-4" 
+        class="text-gray-200 hover:text-teal-600 transition">Contact</a>
+      <a routerLink="/company" routerLinkActive="text-teal-500 underline underline-offset-4" (click)="closeMenu()"
+        class="block py-2 text-gray-200 hover:text-teal-600">Company</a>
     </div>
     <!-- Location Button -->
 
 
 
     <!-- Auth Buttons -->
-    <div class="hidden md:flex items-center gap-3">
-      <div class="hidden md:flex items-center gap-2">
-        <button (click)="hanleLocationChoose()" 
+    <div class="hidden lg:flex items-center gap-3">
+      <div class="hidden lg:flex items-center gap-2">
+        <button (click)="hanleLocationChoose()"
           class="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-200 hover:text-teal-600 hover:border-teal-600 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -39,8 +48,7 @@
     </div>
 
     <!-- Mobile Menu Button -->
-    <button (click)="toggleMenu()"
-      class="md:hidden p-2 text-gray-300 hover:bg-gray-800 rounded-lg">
+    <button (click)="toggleMenu()" class="lg:hidden p-2 text-gray-300 hover:bg-gray-800 rounded-lg">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
@@ -48,81 +56,79 @@
   </div>
 
   @if(menuIsHover){
-    <!-- Desktop Footer Navigation -->
-    <div class="hidden md:block bg-gray-900 text-white py-10 px-6 border-t border-gray-700 fixed inset-0 z-50 top-18 w-full h-[360px]">  
-      <div class="max-w-screen-xl mx-auto grid grid-cols-4 gap-8">
-        
-        <!-- Featured -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">Featured</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:underline">Shop All New Arrivals</a></li>
-            <li><a href="#" class="hover:underline">Bestsellers</a></li>
-            <li><a href="#" class="hover:underline">Coming Soon</a></li>
-            <li><a href="#" class="hover:underline">SNKRS Launch Calendar</a></li>
-            <li><a href="#" class="hover:underline">Winter Essentials</a></li>
-            <li><a href="#" class="hover:underline">Nike x LEGO® Collection</a></li>
-            <li><a href="#" class="hover:underline">Jordan</a></li>
-          </ul>
-        </div>
+  <!-- Desktop Footer Navigation -->
+  <div
+    class="hidden md:block bg-gray-900 text-white py-10 px-6 border-t border-gray-700 fixed inset-0 z-50 top-18 w-full h-[360px]">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-4 gap-8">
 
-        <!-- Shop Icons -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">Shop Icons</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:underline">Air Max</a></li>
-            <li><a href="#" class="hover:underline">Pegasus</a></li>
-            <li><a href="#" class="hover:underline">Vomero</a></li>
-            <li><a href="#" class="hover:underline">Cortez</a></li>
-            <li><a href="#" class="hover:underline">Air Jordan 1</a></li>
-            <li><a href="#" class="hover:underline">Air Force 1</a></li>
-            <li><a href="#" class="hover:underline">Dunk</a></li>
-          </ul>
-        </div>
-
-        <!-- Jordan -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">Jordan</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:underline">Shop All Jordan</a></li>
-            <li><a href="#" class="hover:underline">Latest Drops</a></li>
-            <li><a href="#" class="hover:underline">Jordan Streetwear</a></li>
-            <li><a href="#" class="hover:underline">Jordan Basketball</a></li>
-          </ul>
-        </div>
-
-        <!-- Discover Sport -->
-        <div>
-          <h3 class="text-lg font-semibold mb-4">Discover Sport</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:underline">Running</a></li>
-            <li><a href="#" class="hover:underline">Training & Gym</a></li>
-            <li><a href="#" class="hover:underline">Basketball</a></li>
-            <li><a href="#" class="hover:underline">Football</a></li>
-            <li><a href="#" class="hover:underline">Golf</a></li>
-            <li><a href="#" class="hover:underline">Tennis</a></li>
-            <li><a href="#" class="hover:underline">Yoga & Pilates</a></li>
-            <li><a href="#" class="hover:underline">Dance</a></li>
-            <li><a href="#" class="hover:underline">Skateboarding</a></li>
-          </ul>
-        </div>
-
+      <!-- Featured -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Featured</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline">Shop All New Arrivals</a></li>
+          <li><a href="#" class="hover:underline">Bestsellers</a></li>
+          <li><a href="#" class="hover:underline">Coming Soon</a></li>
+          <li><a href="#" class="hover:underline">SNKRS Launch Calendar</a></li>
+          <li><a href="#" class="hover:underline">Winter Essentials</a></li>
+          <li><a href="#" class="hover:underline">Nike x LEGO® Collection</a></li>
+          <li><a href="#" class="hover:underline">Jordan</a></li>
+        </ul>
       </div>
+
+      <!-- Shop Icons -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Shop Icons</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline">Air Max</a></li>
+          <li><a href="#" class="hover:underline">Pegasus</a></li>
+          <li><a href="#" class="hover:underline">Vomero</a></li>
+          <li><a href="#" class="hover:underline">Cortez</a></li>
+          <li><a href="#" class="hover:underline">Air Jordan 1</a></li>
+          <li><a href="#" class="hover:underline">Air Force 1</a></li>
+          <li><a href="#" class="hover:underline">Dunk</a></li>
+        </ul>
+      </div>
+
+      <!-- Jordan -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Jordan</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline">Shop All Jordan</a></li>
+          <li><a href="#" class="hover:underline">Latest Drops</a></li>
+          <li><a href="#" class="hover:underline">Jordan Streetwear</a></li>
+          <li><a href="#" class="hover:underline">Jordan Basketball</a></li>
+        </ul>
+      </div>
+
+      <!-- Discover Sport -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Discover Sport</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline">Running</a></li>
+          <li><a href="#" class="hover:underline">Training & Gym</a></li>
+          <li><a href="#" class="hover:underline">Basketball</a></li>
+          <li><a href="#" class="hover:underline">Football</a></li>
+          <li><a href="#" class="hover:underline">Golf</a></li>
+          <li><a href="#" class="hover:underline">Tennis</a></li>
+          <li><a href="#" class="hover:underline">Yoga & Pilates</a></li>
+          <li><a href="#" class="hover:underline">Dance</a></li>
+          <li><a href="#" class="hover:underline">Skateboarding</a></li>
+        </ul>
+      </div>
+
     </div>
+  </div>
 
   }
 
   <!-- Mobile Menu -->
   <div [ngClass]="{ 'block': menuOpen, 'hidden': !menuOpen }"
-    class="md:hidden px-4 pb-4 transition-all duration-300 ease-in-out">
-    <a routerLink="/home" (click)="closeMenu()"
-      class="block py-2 text-gray-200 hover:text-teal-600">Home</a>
+    class="lg:hidden px-4 pb-4 transition-all duration-300 ease-in-out">
+    <a routerLink="/home" (click)="closeMenu()" class="block py-2 text-gray-200 hover:text-teal-600">Home</a>
+    <a routerLink="/about" (click)="closeMenu()" class="block py-2 text-gray-200 hover:text-teal-600">About</a>
+    <a routerLink="/contact" (click)="closeMenu()" class="block py-2 text-gray-200 hover:text-teal-600">Contact</a>
     <a routerLink="/company" (click)="closeMenu()"
       class="block py-2 text-gray-200 hover:text-teal-600">Company</a>
-    <a routerLink="/marketplace" (click)="closeMenu()"
-      class="block py-2 text-gray-200 hover:text-teal-600">Marketplace</a>
-    <a routerLink="/contact" (click)="closeMenu()"
-      class="block py-2 text-gray-200 hover:text-teal-600">Contact</a>
     <div class="mt-3 space-y-2">
       <!-- Mobile Location Button -->
       <button (click)="hanleLocationChoose();closeMenu()"
@@ -152,119 +158,121 @@
 <!-- choose Location -->
 <!-- location-selector.component.html -->
 @if(showModal){
-  <div  class="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-30">
-    <div class="bg-white w-full max-w-6xl p-6 rounded-lg relative overflow-y-auto max-h-screen hide-scrollbar max-sm:py-10">
-        <!-- Close button -->
-        <button (click)="closeModal()"
-            class="absolute top-4 right-4 text-black bg-black/10 hover:bg-black/20 rounded-full w-8 h-8 flex items-center justify-center">
-            ✕
-        </button>
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-30">
+  <div
+    class="bg-white w-full max-w-6xl p-6 rounded-lg relative overflow-y-auto max-h-screen hide-scrollbar max-sm:py-10">
+    <!-- Close button -->
+    <button (click)="closeModal()"
+      class="absolute top-4 right-4 text-black bg-black/10 hover:bg-black/20 rounded-full w-8 h-8 flex items-center justify-center">
+      ✕
+    </button>
 
-        <!-- Title -->
-        <h1 class="text-3xl font-semibold text-center mb-12">Select your Location <i class="fas fa-map-marker-alt text-red-500"></i>
-</h1>
+    <!-- Title -->
+    <h1 class="text-3xl font-semibold text-center mb-12">Select your Location <i
+        class="fas fa-map-marker-alt text-red-500"></i>
+    </h1>
 
-        
 
-        <!-- Africa -->
-        <div class="mb-10">
-            <h2 class="text-2xl font-medium mb-6">England</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                @for(england of EnglandLocationList; track england.indexOf(england)){
-                <div (click)="handleLocation(england)"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    South EngLand <div class="text-sm text-gray-500">{{england}}</div>
-                </div>
-                }
-            </div>
+
+    <!-- Africa -->
+    <div class="mb-10">
+      <h2 class="text-2xl font-medium mb-6">England</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        @for(england of EnglandLocationList; track england.indexOf(england)){
+        <div (click)="handleLocation(england)"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          South EngLand <div class="text-sm text-gray-500">{{england}}</div>
         </div>
-
-        <!-- South Asia -->
-         <div class="mb-10">
-            <h2 class="text-2xl font-medium mb-6">South Asia</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                @for(asia of AsiaLocationList; track (asia.country)){
-                <div (click)="handleLocation(asia)"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                   {{ asia.country }} <div class="text-sm text-gray-500">{{asia.cities}}</div>
-                </div>
-                }
-            </div>
-        </div>
-
-         <div class="mb-10">
-            <h2 class="text-2xl font-medium mb-6">South Scotland</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                @for(scotland of ScotlandLocationList; track scotland.indexOf(scotland)){
-                <div (click)="handleLocation(scotland)"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    South Scotland <div class="text-sm text-gray-500">{{scotland}}</div>
-                </div>
-                }
-            </div>
-        </div>
-        
-
-
-        <!-- Americas -->
-        <div>
-            <h2 class="text-2xl font-medium mb-6">Americas</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Argentina <div class="text-sm text-gray-500">Español</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Brasil <div class="text-sm text-gray-500">Português</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Canada <div class="text-sm text-gray-500">English</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Canada <div class="text-sm text-gray-500">Français</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Chile <div class="text-sm text-gray-500">Español</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Colombia <div class="text-sm text-gray-500">Español</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    México <div class="text-sm text-gray-500">Español</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Peru <div class="text-sm text-gray-500">Español</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Puerto Rico <div class="text-sm text-gray-500">Español</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    United States <div class="text-sm text-gray-500">English</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Estados Unidos <div class="text-sm text-gray-500">Español</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Uruguay <div class="text-sm text-gray-500">Español</div>
-                </div>
-                <div (click)="Working()"
-                    class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
-                    Latin America <div class="text-sm text-gray-500">Español</div>
-                </div>
-            </div>
-        </div>
-      
+        }
+      </div>
     </div>
+
+    <!-- South Asia -->
+    <div class="mb-10">
+      <h2 class="text-2xl font-medium mb-6">South Asia</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        @for(asia of AsiaLocationList; track asia.id){
+        <div (click)="handleLocation(asia)"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          {{ asia.country }} <div class="text-sm text-gray-500">{{asia.cities}}</div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="mb-10">
+      <h2 class="text-2xl font-medium mb-6">South Scotland</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        @for(scotland of ScotlandLocationList; track scotland.indexOf(scotland)){
+        <div (click)="handleLocation(scotland)"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          South Scotland <div class="text-sm text-gray-500">{{scotland}}</div>
+        </div>
+        }
+      </div>
+    </div>
+
+
+
+    <!-- Americas -->
+    <div>
+      <h2 class="text-2xl font-medium mb-6">Americas</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Argentina <div class="text-sm text-gray-500">Español</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Brasil <div class="text-sm text-gray-500">Português</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Canada <div class="text-sm text-gray-500">English</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Canada <div class="text-sm text-gray-500">Français</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Chile <div class="text-sm text-gray-500">Español</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Colombia <div class="text-sm text-gray-500">Español</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          México <div class="text-sm text-gray-500">Español</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Peru <div class="text-sm text-gray-500">Español</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Puerto Rico <div class="text-sm text-gray-500">Español</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          United States <div class="text-sm text-gray-500">English</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Estados Unidos <div class="text-sm text-gray-500">Español</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Uruguay <div class="text-sm text-gray-500">Español</div>
+        </div>
+        <div (click)="Working()"
+          class="border rounded-xl md:p-4 max-sm:p-2 cursor-pointer transition-transform duration-200 hover:shadow-lg hover:scale-105">
+          Latin America <div class="text-sm text-gray-500">Español</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 }
