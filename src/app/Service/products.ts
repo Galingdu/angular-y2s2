@@ -9,15 +9,18 @@ export class Products {
 
   constructor() {
     this.cartList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
-    console.log(this.cartList);
+    localStorage.setItem('allProdcut', JSON.stringify(this.products));
   }
   getCardList() {
+    this.cartList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
     return this.cartList;
   }
   addToCart(item: Product) {
+    let index: number = this.products.indexOf(item);
+    this.products[index].status = !this.products[index].status;
     this.cartList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
     item.qty = 1;
-    item.cartCount++
+    item.cartCount++;
     let isExist: any = this.cartList.find((i) => i.id == item.id);
     if (isExist) {
       isExist.qty++;
@@ -26,39 +29,24 @@ export class Products {
     } else {
       this.cartList.push(item);
     }
+
     localStorage.setItem('cartList', JSON.stringify(this.cartList));
   }
 
   getProduct() {
     return this.products;
   }
-
-  handleClear() {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
-    }).then((result: any) => {
-      if (result.isConfirmed) {
-        this.cartList = [];
-        // this.products.forEach(product => product.cartCount = 0);
-        localStorage.setItem('cartList', JSON.stringify([]));
-        localStorage.setItem('itemCount', JSON.stringify(0));
-        this.cartList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
-
-        Swal.fire({
-          title: 'Deleted!',
-          text: 'Your cart has been cleared.',
-          icon: 'success',
-        });
-      }
-    });
+  
+  handleCancelOrder(item: any) {
+    let index: number = this.products.indexOf(item);
+    this.products[index].status = !this.products[index].status;
+    let findId = this.cartList.find((fData) => fData.id == item.id);
+    if (findId) {
+      let deleteById = this.cartList.filter((i) => i.id !== item.id);
+      this.cartList = deleteById;
+    }
+    localStorage.setItem('cartList', JSON.stringify(this.cartList));
   }
-
   // handleCardDelete(cardData: any) {
   //   Swal.fire({
   //     title: 'Are you sure?',
@@ -92,6 +80,7 @@ export class Products {
       id: 1,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'Nike Dri-fit',
       price: 129.99,
       description:
@@ -104,6 +93,7 @@ export class Products {
       id: 2,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'Puma RS-X³ Puzzle',
       price: 110.0,
       description:
@@ -116,6 +106,7 @@ export class Products {
       id: 3,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'New Balance 550',
       price: 109.95,
       description: 'A basketball-inspired lifestyle shoe with vintage flair.',
@@ -127,6 +118,7 @@ export class Products {
       id: 4,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'Adidas Ultraboost Light',
       price: 159.99,
       description: 'Lightweight cushioning and energy return for a smooth run.',
@@ -138,6 +130,7 @@ export class Products {
       id: 5,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'Converse Chuck Taylor All Star',
       price: 59.99,
       description: 'An iconic canvas sneaker for casual everyday style.',
@@ -150,6 +143,7 @@ export class Products {
       id: 6,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'Puma RS-X³ Puzzle',
       price: 110.0,
       description:
@@ -162,6 +156,7 @@ export class Products {
       id: 7,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'New Balance 550',
       price: 109.95,
       description: 'A basketball-inspired lifestyle shoe with vintage flair.',
@@ -173,6 +168,7 @@ export class Products {
       id: 8,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'Adidas Ultraboost Light',
       price: 159.99,
       description: 'Lightweight cushioning and energy return for a smooth run.',
@@ -184,6 +180,7 @@ export class Products {
       id: 9,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'Converse Chuck Taylor All Star',
       price: 59.99,
       description: 'An iconic canvas sneaker for casual everyday style.',
@@ -195,6 +192,7 @@ export class Products {
       id: 10,
       qty: 0,
       cartCount: 0,
+      status: false,
       name: 'Air Zoom Pegasus',
       price: 129.99,
       description:

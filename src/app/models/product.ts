@@ -7,4 +7,5 @@ export interface Product {
     image:string;
     rating:number;  
     qty:number; 
+    status?:boolean;
 }

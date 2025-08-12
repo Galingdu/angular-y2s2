@@ -3,7 +3,6 @@
   import { Product } from '../models/product';
   import { Products } from '../Service/products';
   import { RouterLink } from '@angular/router';
-  import { JsonpInterceptor } from '@angular/common/http';
   declare const Swal: any;
 
   @Component({
@@ -15,6 +14,7 @@
   export class AddToCard {
 
     constructor(public productService:Products){
+      this.products = JSON.parse(localStorage.getItem('allProduct')??'[]')
       this.products=this.productService.getProduct()
       this.cardList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
       
@@ -22,6 +22,7 @@
     products: Product[] = [];
     cardList: Product[] = [];
     totalOrders: number = 0; 
+    
 
 ngOnInit() {
   this.cardList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
@@ -31,10 +32,10 @@ ngOnInit() {
 }
 
 addToCart(item: Product) {
+  
   this.productService.addToCart(item);
   this.cardList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
   this.totalOrders = this.cardList.length;
-  
 }
 
 handleClear() {
@@ -50,11 +51,10 @@ handleClear() {
     if (result.isConfirmed) {
       this.cardList = [];
       this.totalOrders = 0;
-      this.products.forEach(product => product.cartCount = 0);
-      localStorage.setItem('cardList2', JSON.stringify([]));
+      this.products.forEach(product => product.status = false);
       localStorage.setItem('cartList', JSON.stringify([]));
       localStorage.setItem('itemCount', JSON.stringify(0));
-      this.productService.handleClear()
+      // this.productService.handleClear()
 
       Swal.fire({
         title: 'Deleted!',
@@ -74,6 +74,13 @@ handleClear() {
       imageHeight: 200,
       confirmButtonText: 'Close',
     });
+  }
+  handleCancel(item:any){
+   
+    this.productService.handleCancelOrder(item)
+    this.cardList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
+    this.totalOrders = this.cardList.length;
+
   }
 
 

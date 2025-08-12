@@ -1,67 +1,120 @@
-<div class="container mx-auto mt-8 min-h-[60vh]">
-  <h1 class="lg:ms-5">Order List ({{addedProducts.length}} items)</h1>
+<a routerLink="/">
+  <div class="ps-5 pt-5">
+    <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+      fill="none" viewBox="0 0 24 24">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M6 18 17.94 6M18 18 6.06 6" />
+    </svg>
+  </div>
+</a>
+<div class="container mx-auto mt-3 md:min-h-[64vh] md:max-h-[65vh] min-h-[50vh] max-h-[60vh] overflow-y-auto hide-scrollbar" data-aos="fade-up">
+
+  <h1 class="ms-5 font-semibold">Order List (<span class="text-red-600">{{addedProducts.length}}</span> items)</h1>
   <!-- @if(addedProducts.qty>0){
 
   } -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 bg-white">
-  <!-- Card Item -->
- @for(cartList of addedProducts;track cartList.id){
-    <div class="flex items-center border rounded-lg shadow-sm pe-5" data-aos="fade-up">
-    <!-- Image -->
-    <img src={{cartList.image}} alt="Loose Fit Strip Shirts" class="w-25 h-30 object-contain">
+    <!-- Card Item -->
+    @for(cartList of addedProducts;track cartList.id){
+    <div class="flex items-center border rounded-lg shadow-sm pe-5" >
+      <!-- Image -->
+      <img src={{cartList.image}} alt="Loose Fit Strip Shirts" class="w-25 h-30 object-contain">
 
-    <!-- Content -->
-    <div class="py-3 sm:py-5 flex flex-col flex-grow">
-      <!-- Price -->
-      <div class="flex items-center gap-2">
-        <span class="text-red-600 font-semibold">$ {{cartList.price}}</span>
-      
-        <span class="text-xs text-red-600">10% Off for new customer</span>
-      </div>
+      <!-- Content -->
+      <div class="py-3 sm:py-5 flex flex-col flex-grow">
+        <!-- Price -->
+        <div class="flex items-center gap-2">
+          <span class="text-red-600 font-semibold">$ {{cartList.price}}</span>
 
-      <!-- Title & Code -->
-      <h3 class="text-sm font-medium mt-2">{{cartList.name}}</h3>
-      <p class="text-xs text-gray-500">Code. 412250{{cartList.id}}</p>
-
-      <!-- Color & Size -->
-      <div class="flex flex-wrap items-center justify-between gap-3 my-3">
-       <div class="flex items-center gap-3">
-         <select class="border rounded text-sm">
-          <option>Sky Blue</option>
-          <option>Brown</option>
-          <option>Black</option>
-        </select>
-        <select class="border rounded text-sm">
-          <option>No size</option>
-          <option>size L</option>
-          <option>size S</option>
-          <option>size XL</option>
-        </select>
-       </div>
-      
-      </div>
-        <div class="flex items-center gap-3">
-            <h1 class="text-3xl font-semibold cursor-pointer" (click)="handleDown(cartList)">-</h1>
-            <h2 class="font-bold text-red-600 text-2xl">{{cartList.qty}}</h2>
-            <h1 class="text-2xl font-semibold cursor-pointer" (click)="handleUp(cartList)">+</h1>
+          <span class="text-xs text-red-600">10% Off for new customer</span>
         </div>
-      
 
-      <!-- Stock Note -->
-      <!-- <p class="text-xs text-red-500 mt-1">2 left in stock</p> -->
+        <!-- Title & Code -->
+        <h3 class="text-sm font-medium mt-2">{{cartList.name}}</h3>
+        <p class="text-xs text-gray-500">Code. 412250{{cartList.id}}</p>
 
-      <!-- Button -->
-      <button (click)="handleCardDelte(cartList)" class="lg:mt-3 mt-2 bg-white border border-gray-400 rounded-lg py-2 text-sm hover:bg-teal-400 cursor-pointer">
-        Delete from order
-      </button>
+        <!-- Color & Size -->
+        <div class="flex flex-wrap items-center justify-between gap-3 my-3">
+          <div class="flex items-center gap-3">
+            <select class="border rounded text-sm">
+              <option>Sky Blue</option>
+              <option>Brown</option>
+              <option>Black</option>
+            </select>
+            <select class="border rounded text-sm">
+              <option>No size</option>
+              <option>size L</option>
+              <option>size S</option>
+              <option>size XL</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="flex items-center gap-3">
+          <h1 class="text-3xl font-semibold cursor-pointer" (click)="handleDown(cartList)">-</h1>
+          <h2 class="font-bold text-red-600 text-2xl">{{cartList.qty}}</h2>
+          <h1 class="text-2xl font-semibold cursor-pointer" (click)="handleUp(cartList)">+</h1>
+        </div>
+
+
+        <!-- Stock Note -->
+        <!-- <p class="text-xs text-red-500 mt-1">2 left in stock</p> -->
+
+        <!-- Button -->
+        <button (click)="handleCardDelte(cartList)"
+          class="lg:mt-3 mt-2 bg-white border border-gray-400 rounded-lg py-2 text-sm hover:bg-teal-400 cursor-pointer">
+          Delete from order
+        </button>
+      </div>
     </div>
+
+
+    }
+
+    <!-- Repeat similar cards for each product -->
   </div>
 
 
- }
-
-  <!-- Repeat similar cards for each product -->
 </div>
 
+<!-- -----------  payment --------- -->
+ <hr class="hidden sm:block">
+ <div class="container mx-auto">
+  <div class="w-full rounded-md p-4 bg-white">
+  <!-- Total -->
+  <div class="flex justify-between font-semibold text-lg">
+    <span>Total</span>
+    <span>US {{total|currency}}</span>
+  </div>
 
+  <!-- Save -->
+  <div class="flex justify-between text-gray-600 text-sm my-3">
+    <span>Save</span>
+    <span class="text-red-500">US -{{savePrice|currency}}</span>
+  </div>
+
+  <!-- Delivery fee -->
+  <div class="flex justify-between text-gray-600 text-sm mt-1">
+    <span>Delivery fee</span>
+    <span>US {{delivery|currency}}</span>
+  </div>
+
+  <!-- Divider -->
+  <hr class="my-5 border-gray-300">
+
+  <!-- Amount to pay -->
+  <div class="flex justify-between items-center font-bold text-lg my-2">
+    <span>Amount to pay</span>
+    <span>US {{totalAmount|currency}}</span>
+  </div>
+
+  <!-- Button -->
+   <a>
+
+    <button class="mt-4 w-50 bg-black text-white py-3 rounded-md hover:bg-gray-800 transition font-semibold" (click)="handlePay()">
+      Proceed to Checkout
+  </button>
+   </a>
 </div>
+
+ </div>

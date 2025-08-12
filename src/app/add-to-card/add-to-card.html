@@ -3,20 +3,22 @@
     Popular Products ⚡️ </h2>
   <!-- Scrollable on mobile, grid on desktop -->
   <div class="flex lg:grid gap-4 overflow-x-auto lg:overflow-visible px-2 lg:grid-cols-5">
-     
 
-     @for(product of products; track product.id){
-       <div
-      class="flex-shrink-0 w-64 lg:w-auto max-w-sm bg-white rounded-xl shadow-md border-gray-200 border-2 overflow-hidden md:mb-5 max-sm:mb-3" >
+
+    @for(product of products; track product.id){
+    <div
+      class="flex-shrink-0 w-64 lg:w-auto max-w-sm bg-white rounded-xl shadow-md border-gray-200 border-2 overflow-hidden md:mb-5 max-sm:mb-3">
       <!-- Product Image -->
-      <div class="flex justify-center items-center bg-gray-100 overflow-hidden sm:h-50 h-35" >
-        <img [src]="product.image" alt="{{product.name}}" class="h-full w-full object-contain hover:scale-105 transition-transform duration-300" />
+      <div class="flex justify-center items-center bg-gray-100 overflow-hidden sm:h-50 h-35">
+        <img [src]="product.image" alt="{{product.name}}"
+          class="h-full w-full object-contain hover:scale-105 transition-transform duration-300" />
       </div>
 
       <!-- Product Info -->
       <div class="p-5 text-center">
         <div class="text-gray-800 font-bold text-lg tracking-wide line-clamp-1">{{product.name}}</div>
-        <p class="text-gray-500 text-sm mt-1 lg:line-clamp-1 line-clamp-2 hover:cursor-pointer" (click)="photoClicked(product)">{{product.description}}</p>
+        <p class="text-gray-500 text-sm mt-1 lg:line-clamp-1 line-clamp-2 hover:cursor-pointer"
+          (click)="photoClicked(product)">{{product.description}}</p>
         <p class="text-green-500 text-xl font-semibold mt-3">{{product.price | currency}}</p>
 
         <!-- Rating -->
@@ -26,24 +28,40 @@
       </div>
 
       <!-- Add to Cart Button -->
+      @if(product.status==false){
       <div class="bg-teal-500 hover:bg-teal-600 text-white text-center py-3 cursor-pointer"
         (click)="addToCart(product)">
         ADD TO CART <span class="text-red-500 font-bold ps-1">
           <!-- @if(product.cartCount>0){
              {{product.cartCount}}
           } -->
-          
+
         </span>
       </div>
+      }
+      @if(product.status){
+      <div class="bg-red-600 hover:bg-red-700 text-white text-center py-3 cursor-pointer"
+        (click)="handleCancel(product)">
+        Canel <span class="text-red-500 font-bold ps-1">
+          <!-- @if(product.cartCount>0){
+             {{product.cartCount}}
+          } -->
+
+        </span>
+      </div>
+      }
       @if(cardList.length){
       <!-- Parent container for positioning -->
       <div class="fixed bottom-6 right-6 z-50 ">
         <!-- Button with icon and text -->
         <button (click)="handleClear()"
           class=" relative flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 px-4 py-2 text-white font-semibold rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
           </svg>
+
           <span class="hidden md:block">Clear Products</span>
 
           <!-- Count badge -->
@@ -52,33 +70,37 @@
             {{totalOrders}}
           </span>
         </button>
-            </div>
-  <a routerLink="/productcart">
-        <div class="fixed bottom-18 right-7 z-50 animate-bounce">
-        <!-- Button with icon and text -->
-        <div class="relative inline-block">
-          <div class="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white text-center px-3 py-2 cursor-pointer rounded-lg shadow-lg">
-            <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z" />
-            </svg>
-            <span class="hidden md:block">View- Products</span>
-          </div>
-
-          <!-- Cart Count Badge -->
-          <span class="absolute -top-2 -right-2 bg-white text-red-600 font-bold text-xs px-2 py-0.5 rounded-full shadow">
-            {{totalOrders}}
-          </span>
-        </div>
       </div>
-  </a>
+      <a routerLink="/productcart">
+        <div class="fixed bottom-18 right-7 z-50 animate-bounce">
+          <!-- Button with icon and text -->
+          <div class="relative inline-block">
+            <div
+              class="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white text-center px-3 py-2 cursor-pointer rounded-lg shadow-lg">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+              </svg>
+
+              <span class="hidden md:block">View- Products</span>
+            </div>
+
+            <!-- Cart Count Badge -->
+            <span
+              class="absolute -top-2 -right-2 bg-white text-red-600 font-bold text-xs px-2 py-0.5 rounded-full shadow">
+              {{totalOrders}}
+            </span>
+          </div>
+        </div>
+      </a>
 
       }
     </div>
 
-     }
+    }
 
-   
+
 
   </div>
 </div>

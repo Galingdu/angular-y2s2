@@ -19,6 +19,10 @@ export const routes: Routes = [
     path: 'signup',
     component: SignUp,
   },
+    {
+        path: 'productcart',
+        component:ShowCardProductAdded,
+      },
   {
     path: '',
     component: Layout,
@@ -46,11 +50,7 @@ export const routes: Routes = [
       {
         path: 'loacation',
         component: SelectLocation,
-      },
-      {
-        path: 'productcart',
-        component:ShowCardProductAdded,
-      },
+      }
     ],
   },
   {
