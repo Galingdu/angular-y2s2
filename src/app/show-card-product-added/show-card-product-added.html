@@ -109,12 +109,21 @@
   </div>
 
   <!-- Button -->
-   <a>
+  
 
-    <button class="mt-4 w-50 bg-black text-white py-3 rounded-md hover:bg-gray-800 transition font-semibold" (click)="handlePay()">
+  @if(total>0){
+     <a routerLink="/productcart/selectToPay">
+       <button class="mt-4 w-50 bg-black text-white py-3 rounded-md hover:bg-gray-800 transition font-semibold" (click)="handlePay()">
+          Proceed to Checkout
+      </button>
+   </a>
+  }@else {
+      <button class="mt-4 w-50 bg-black text-white py-3 rounded-md hover:bg-gray-800 transition font-semibold" (click)="handlePay()">
       Proceed to Checkout
   </button>
-   </a>
+  }
+  
+   
 </div>
 
  </div>

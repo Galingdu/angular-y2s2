@@ -9,6 +9,8 @@ import { Layout } from './layout/layout';
 import { AboutPage } from './about-page/about-page';
 import { Company } from './company/company';
 import { ShowCardProductAdded } from './show-card-product-added/show-card-product-added';
+import { SelectToPay } from './select-to-pay/select-to-pay';
+import { PayWithQr } from './pay-with-qr/pay-with-qr';
 
 export const routes: Routes = [
   {
@@ -22,6 +24,14 @@ export const routes: Routes = [
     {
         path: 'productcart',
         component:ShowCardProductAdded,
+      },
+    {
+        path: 'productcart/selectToPay',
+        component:SelectToPay,
+      },
+    {
+        path: 'productcart/selectToPay/khqr',
+        component:PayWithQr,
       },
   {
     path: '',

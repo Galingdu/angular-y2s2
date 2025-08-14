@@ -103,26 +103,29 @@ export class ShowCardProductAdded {
     this.addedProducts.forEach(p=>{
       this.total = this.total + p.qty*p.price
     })
+    
     if(this.total>1){
       this.delivery=2
     }
     else{
       this.delivery=0
     }
-   if(this.total>=100){
-    this.savePrice = 10
+   if(this.total>=1){
+    this.savePrice = this.total*0.10
      this.totalAmount = this.total - this.savePrice
    }else{
     this.savePrice=0
     this.totalAmount = this.total
    }
+   this.cartService.getTotalAmount(this.totalAmount)
     
   }
 
   handlePay() {
-  if (this.total > 0) {
-    window.open('https://pay.ababank.com/dyACcRdZCyf7ofeK9', '_blank');
-  } else {
+  if (this.total > 0) { 
+    console.log("succes")
+
+  }else{
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isMobile) {
@@ -131,5 +134,6 @@ export class ShowCardProductAdded {
       Swal.fire("No item selected");
     }
   }
+  
 }
 }

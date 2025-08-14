@@ -36,6 +36,14 @@ export class Products {
   getProduct() {
     return this.products;
   }
+  totalAmount:number=0
+  getTotalAmount(total:number){
+    this.totalAmount=total
+      
+  }
+  getTotalFromService(){
+    return this.totalAmount
+  }
   
   handleCancelOrder(item: any) {
     let index: number = this.products.indexOf(item);
