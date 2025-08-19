@@ -7,7 +7,7 @@ declare const axios:any
 export class DrinkService {
 
 
-   drinkApiUrl: string = 'https://sv-gen-api.bczin2zin2takeo.us/api/product';
+   drinkApiUrl: string = 'https://68a3e2ccc123272fb9b0a6dd.mockapi.io/chenglyheng/api/shoes/shoes';
 
   getAllDrink(): Promise<any[]> {
     return axios.get(this.drinkApiUrl)

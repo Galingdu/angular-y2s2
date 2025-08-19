@@ -1,9 +1,10 @@
 import { Component,ElementRef,ViewChild } from '@angular/core';
 import { DrinkService } from '../Service/drink-service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-card-drink',
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './card-drink.html',
   styleUrl: './card-drink.css'
 })
