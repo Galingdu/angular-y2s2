@@ -4,11 +4,12 @@ import { Product } from '../models/product';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 import { escapeRegExp } from '@angular/compiler';
+import { StarCursor } from '../directives/star-cursor';
 declare const Swal: any;
 
 @Component({
   selector: 'app-show-card-product-added',
-  imports: [RouterLink,CurrencyPipe],
+  imports: [RouterLink,CurrencyPipe,StarCursor],
   templateUrl: './show-card-product-added.html',
   styleUrl: './show-card-product-added.css',
 })

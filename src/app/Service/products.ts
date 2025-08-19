@@ -9,7 +9,8 @@ export class Products {
 
   constructor() {
     this.cartList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
-    localStorage.setItem('allProdcut', JSON.stringify(this.products));
+    this.totalAmount = JSON.parse(localStorage.getItem('totalAmount') ?? '0');
+
   }
   getCardList() {
     this.cartList = JSON.parse(localStorage.getItem('cartList') ?? '[]');
@@ -39,6 +40,7 @@ export class Products {
   totalAmount:number=0
   getTotalAmount(total:number){
     this.totalAmount=total
+    localStorage.setItem('totalAmount', JSON.stringify(this.totalAmount));
       
   }
   getTotalFromService(){
